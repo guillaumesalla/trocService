@@ -2,5 +2,24 @@
 {% block title %} trocServices {% endblock %}
 
 {% block  body %}
-
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Service Demandé </th>
+                <th>Service Proposé </th>
+                <th>photo </th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for t in trocs %}
+                    <tr>
+                        <td>{{ t.serviceDemande }}</td>
+                        <td>{{ t.servicePropose }}</td>
+                        <td>{{ t.photo }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
