@@ -16,7 +16,7 @@
                     <tr>
                         <td>{{ t.serviceDemande }}</td>
                         <td>{{ t.servicePropose }}</td>
-                        <td>{{ t.photo }}</td>
+                        <td><img src="{{ t.photo }}" alt="{{ t.serviceDemande }}" /></td>
                     </tr>
                 {% endfor %}
             </tbody>
