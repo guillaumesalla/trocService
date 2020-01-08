@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,14 +29,19 @@ class Troc
     private $servicePropose;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $photo;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="Troc")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="trocs")
      */
-    private $users;
+    private $user;
+
+    public function __construct()
+    {
+        $this->user = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -70,21 +77,35 @@ class Troc
         return $this->photo;
     }
 
-    public function setPhoto(?string $photo): self
+    public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
 
         return $this;
     }
 
-    public function getUsers(): ?Users
+    /**
+     * @return Collection|User[]
+     */
+    public function getUser(): Collection
     {
-        return $this->users;
+        return $this->user;
     }
 
-    public function setUsers(?Users $users): self
+    public function addUser(User $user): self
     {
-        $this->users = $users;
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->user->contains($user)) {
+            $this->user->removeElement($user);
+        }
 
         return $this;
     }

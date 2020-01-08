@@ -6,21 +6,15 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>prenom </th>
-                <th>nom </th>
-                <th>date de naissance </th>
+                <th>id </th>
                 <th>email </th>
-                <th>telephone </th>
             </tr>
             </thead>
             <tbody>
             {% for u in users %}
                 <tr>
-                    <td>{{ u.firstname }}</td>
-                    <td>{{ u.lastname }}</td>
-                    <td>{{ u.age }}</td>
+                    <td>{{ u.id }}</td>
                     <td>{{ u.email }}</td>
-                    <td>{{ u.phone }}</td>
                 </tr>
             {% endfor %}
             </tbody>

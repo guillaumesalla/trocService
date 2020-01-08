@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Troc;
+use App\Entity\User;
 use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +17,7 @@ class UsersController extends AbstractController
      */
     public function afficherUsers()
     {
-        $em = $this->getDoctrine()->getRepository(Users::class);
+        $em = $this->getDoctrine()->getRepository(User::class);
         return $this->render('users.html.twig', [
                 'users' => $em->findAll(),
         ]);
