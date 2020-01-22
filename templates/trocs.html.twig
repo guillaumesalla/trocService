@@ -2,24 +2,30 @@
 {% block title %} trocServices {% endblock %}
 
 {% block  body %}
-    <div class="container">
-        <table class="table table-striped">
-            <thead>
+    <link rel="stylesheet" href="css/TrocCSS.css" >
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th> ID </th>
+            <th>Service Demandé </th>
+            <th>Service Proposé </th>
+            <th>Photo </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for t in trocs %}
             <tr>
-                <th>Service Demandé </th>
-                <th>Service Proposé </th>
-                <th>photo </th>
+                <th scope="row">{{ t.id }}</th>
+                <th>{{ t.serviceDemande }}</th>
+                <th>{{ t.servicePropose }}</th>
+                <th><img src="{{ t.photo }}" alt="{{ t.serviceDemande }}" /></th>
             </tr>
-            </thead>
-            <tbody>
-                {% for t in trocs %}
-                    <tr>
-                        <td>{{ t.serviceDemande }}</td>
-                        <td>{{ t.servicePropose }}</td>
-                        <td><img src="{{ t.photo }}" alt="{{ t.serviceDemande }}" width="100" height="100"/></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+
 {% endblock %}

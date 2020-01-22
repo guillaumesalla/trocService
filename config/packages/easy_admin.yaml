@@ -2,8 +2,32 @@ easy_admin:
     site_name: 'TrocServicesAdmin.'
     entities:
         # List the entity class name you want to manage
-        - App\Entity\Troc
-        - App\Entity\User
+      User:
+        class: App\Entity\User
+        form:
+          title: 'Editer'
+          fields:
+            - { property: 'email', type: 'email', label: 'Email' }
+            - { property: 'roles', type: 'collection' }
+        list:
+          title: '%%entity_label%% listing'
+          fields:
+            - 'id'
+            - 'email'
+            - { property: 'roles'}
+
+      Troc:
+          class: App\Entity\Troc
+          label: 'Troc'
+          list:
+            fields:
+              - id
+              - serviceDemande
+              - servicePropose
+              - { property: 'photo', type: 'image' }
+          show:
+              title: '%%entity_label%% listing'
+
     design:
        # brand_color: '#1ABC9C'
 
@@ -14,13 +38,6 @@ easy_admin:
         # if the color includes a '%', you must double it to escape it in the YAML file
         # brand_color: 'hsl(0, 100%%, 50%%);
 
-    Troc:
-        class: App\Entity\Troc
-        label: 'Troc'
-        list:
-            title: '%%entity_label%% listing'
-            fields:
-                - id
-                - serviceDemande
-                - servicePropose
-                - { property: 'photo', type: 'image' }
+
+
+
