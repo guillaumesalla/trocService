@@ -2,5 +2,28 @@
 {% block title %} trocServices {% endblock %}
 
 {% block  body %}
-        {{ id }}
+        <div class="container">
+        <div class="row">
+                <div class="col-sm">
+                        <h3>Service demandé</h3>
+                </div>
+                <div class="col-sm">
+                        <h3>Service proposé</h3>
+                </div>
+                <div class="col-sm">
+                        <h3>Photo</h3>
+                </div>
+        </div>
+        <div class="row align-items-center">
+                <div class="col-sm">
+                        {{ id.serviceDemande }}
+                </div>
+                <div class="col-sm">
+                        {{ id.servicePropose }}
+                </div>
+                <div class="col-sm">
+                        <img class="img-fluid" src="{{ id.photo }}" alt="{{ id.serviceDemande }}"/>
+                </div>
+        </div>
+        </div>
 {% endblock %}

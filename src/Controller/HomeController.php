@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Troc;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,8 +13,9 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->render('home.html.twig', [
-
+        $em = $this->getDoctrine()->getRepository(Troc::class);
+        return $this->render('trocs.html.twig', [
+            'trocs' => $em->findAll(),
         ]);
     }
 

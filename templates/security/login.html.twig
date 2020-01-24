@@ -3,6 +3,8 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
+<div class="container">
+    <div class="row">
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -17,6 +19,7 @@
 
     <h1 class="h3 mb-3 font-weight-normal">Connectez vous</h1>
     <div>
+
         <label for="inputEmail">Email</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
         <label for="inputPassword">Mot de passe</label>
@@ -28,15 +31,16 @@
     </div>
 
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Se souvenir de moi
-            </label>
-        </div>
+{#        <div class="checkbox mb-3">#}
+{#            <label>#}
+{#                <input type="checkbox" name="_remember_me"> Se souvenir de moi#}
+{#            </label>#}
+{#        </div>#}
 
-    <br>
     <button class="btn btn-lg btn-primary" type="submit">
         Se connecter
     </button>
 </form>
+    </div>
+</div>
 {% endblock %}
