@@ -12,6 +12,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class UsersController extends AbstractController
 {
     /**
+     * @Route("/user/{id}", name="user")
+     * @param $id
+     * @return Response
+     */
+    public function afficherUser($id)
+    {
+        $em = $this->getDoctrine()->getRepository(User::class);
+        return $this->render('user.html.twig', [
+            'user'=> $em->find($id),
+            'id' => $id,
+        ]);
+    }
+
+    /**
      * @Route("/users", name="users")
      * @return Response
      */

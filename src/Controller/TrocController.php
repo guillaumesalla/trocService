@@ -16,7 +16,9 @@ class TrocController extends AbstractController
      */
     public function afficherTroc($id)
     {
+        $em = $this->getDoctrine()->getRepository(Troc::class);
         return $this->render('troc.html.twig', [
+            'untroc'=> $em->find($id),
             'id' => $id,
         ]);
     }
@@ -29,7 +31,7 @@ class TrocController extends AbstractController
     {
         $em = $this->getDoctrine()->getRepository(Troc::class);
         return $this->render('trocs.html.twig',[
-            'trocs' => $em->findAll(),
+            'trocs' => $em->findBy(array(),array('id' => 'DESC')),
         ]);
     }
 }

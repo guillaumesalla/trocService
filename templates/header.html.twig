@@ -1,4 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<link rel="stylesheet" href="/css/styles.css">
+
+<div class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">
         <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
         trocServices
@@ -9,16 +11,33 @@
             <li class="nav-item">
                 <a class="nav-link" href="/users">Utilisateurs</a>
             </li>
+            {% if is_granted('ROLE_ADMIN') %}
             <li class="nav-item">
                 <a class="nav-link" href="/admin">Admin</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/register">Créer un compte</a>
-            </li>
+            {% endif %}
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Se connecter</a>
+                </li>
+            {% endif %}
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Créer un compte</a>
+                </li>
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Se déconnecter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Vous êtes connecté  {{ app.user.username }}</a>
+                </li>
+            {% endif %}
         </ul>
         <!--<form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="rechercher" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">rechercher</button>
         </form> -->
     </div>
-</nav>
+</div>

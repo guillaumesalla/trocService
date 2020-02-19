@@ -5,9 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrocRepository")
+ * @Vich\Uploadable
  */
 class Troc
 {
@@ -32,6 +36,12 @@ class Troc
      * @ORM\Column(type="string", length=255)
      */
     private $photo;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="trocs")
@@ -80,8 +90,14 @@ class Troc
     public function setPhoto(string $photo): self
     {
         $this->photo = $photo;
+        $this->imageFile = $photo;
 
         return $this;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 
     /**
@@ -112,7 +128,7 @@ class Troc
 
     public function __toString()
     {
-        return (string) $this->id;
+        return (string) $this->servicePropose;
     }
 }
 

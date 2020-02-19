@@ -22,7 +22,7 @@ security:
             logout:
                 path:   app_logout
             form_login:
-                default_target_path: home
+                default_target_path: App\Controller\HomeController.php
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthentificatorAuthenticator

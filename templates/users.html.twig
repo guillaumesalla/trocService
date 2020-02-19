@@ -4,17 +4,24 @@
 {% block  body %}
     <div class="container">
         <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>id </th>
-                <th>email </th>
-            </tr>
-            </thead>
+           <thead class="users">
+               <tr>
+                   <td>email </td>
+                   <td>pseudo </td>
+                   <td>prenom </td>
+                   <td>nom </td>
+                   <td>trocs </td>
+               </tr>
+           </thead>
+
             <tbody>
             {% for u in users %}
                 <tr>
-                    <td>{{ u.id }}</td>
                     <td>{{ u.email }}</td>
+                    <td>{{ u.pseudo }}</td>
+                    <td>{{ u.name }}</td>
+                    <td>{{ u.surname }}</td>
+                    <td><a class="nav-link" href="{{ path('user', {'id': u.id }) }}"><button>afficher trocs</button></a></td>
                 </tr>
             {% endfor %}
             </tbody>

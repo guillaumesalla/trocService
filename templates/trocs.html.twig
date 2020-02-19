@@ -3,11 +3,16 @@
 
 {% block  body %}
     <h1 class="text-center">  Bienvenue sur TrocService </h1><br>
-    <div class="container">
+    <div class="container-fluid mt-5">
         <div class="row">
         {% for t in trocs %}
-                    <div class="col">
-                        <a class="nav-link" href="/{{ path('troc', {'id': 'x'}) }}"><img class="img-fluid" src="{{ t.photo }}" alt="{{ t.serviceDemande }}"/></a>
+                    <div class="col-3">
+                        <div class="container">
+                            <img class="img-fluid" src="{{ t.photo }}" alt="{{ t.serviceDemande }}"/></a>
+                            <div class="overlay">
+                                <a class="nav-link" href="{{ path('troc', {'id': t.id }) }}"><div class="text">{{ t.serviceDemande }}</div>
+                            </div>
+                        </div>
                     </div>
         {% endfor %}
         </div>
