@@ -3,6 +3,8 @@
 {% block title %}Créer un compte{% endblock %}
 
 {% block body %}
+    <link rel="stylesheet" href="/css/styles.css">
+    <div class="bg">
     <div class="container">
         <div class="row">
             <h1 class="h3 mb-3 font-weight-normal">Créer un compte</h1>
@@ -14,10 +16,10 @@
             {{ form_row(registrationForm.name) }}
             {{ form_row(registrationForm.surname) }}
             {{ form_row(registrationForm.plainPassword) }}
-{#            {{ form_row(registrationForm.agreeTerms) }}#}
+            {#{{ form_row(registrationForm.agreeTerms)}}#}
             <button class="btn btn-lg btn-primary">Valider</button>
             {{ form_end(registrationForm) }}
         </div>
     </div>
-
+</div>
 {% endblock %}

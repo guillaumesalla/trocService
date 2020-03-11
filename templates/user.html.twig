@@ -1,32 +1,45 @@
 {% extends 'base.html.twig' %}
+
 {% block title %} trocServices {% endblock %}
 
 {% block  body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <h3>Service demandé</h3>
-            </div>
-            <div class="col-sm">
-                <h3>Service proposé</h3>
-            </div>
-            <div class="col-sm">
-                <h3>Photo</h3>
-            </div>
-        </div>
-            {%  for alltrocs in user.trocs  %}
-        <div class="row align-items-center">
-            <div class="col-sm">
-                {{ alltrocs.serviceDemande }}
-            </div>
-            <div class="col-sm">
-                {{ alltrocs.servicePropose }}
-            </div>
-            <div class="col-sm">
-                <img class="img-thumbnail" src="{{ alltrocs.photo }}" alt="{{ alltrocs.serviceDemande }}"/>
-            </div>
-        </div>
-            {% endfor %}
+    <link rel="stylesheet" href="/css/styles.css">
 
+    <div class="bg">
+        <div>
+            <br>
+            <br>
+            <br>
+            Trocs de {{ user.pseudo }} :
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h3>Service demandé</h3>
+                </div>
+                <div class="col-sm">
+                    <h3>Service proposé</h3>
+                </div>
+                <div class="col-sm">
+                    <h3>Photo</h3>
+                </div>
+            </div>
+            {%  for alltrocs in user.trocs  %}
+                <div class="row align-items-center">
+                    <div class="col-sm">
+                        {{ alltrocs.serviceDemande }}
+                    </div>
+                    <div class="col-sm">
+                        {{ alltrocs.servicePropose }}
+                    </div>
+                    <div class="col-sm">
+                        <img class="img-thumbnail" src="{{ alltrocs.photo }}" alt="{{ alltrocs.serviceDemande }}"/>
+                    </div>
+                    {#            <div class="col-sm">#}
+                    {#                <input >#}
+                    {#            </div>#}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

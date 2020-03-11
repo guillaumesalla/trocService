@@ -1,4 +1,7 @@
-
+body, html {
+    height: 100%;
+    margin: 0;
+}
 
 .img-fluid {
     width: 400px;
@@ -10,7 +13,6 @@
     align-items: center;
     z-index: 1;
 }
-
 
 .bg {
     background-color: #1d2124;
@@ -89,16 +91,18 @@
     font-size: 18px;
     font-weight:bold;
     color: #f7f7f7;
+
 }
 
 .users2{
     font-size: 18px;
     color: #f7f7f7;
+
 }
 
 .navbar {
     width: 100%;
-    color: #878f97;
+    color : white;
     position:fixed;
     top: 0;
     z-index: 10;
